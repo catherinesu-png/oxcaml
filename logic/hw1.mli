@@ -1,32 +1,46 @@
-open! Core
+type arrow_direction = 
+  | Left
+  | Down
+  | Up 
+  | Right 
 
-type player_kind =
-  | X
-  | O
-
-type cell_position =
-  { row : int
-  ; column : int
+type note = 
+  { timestamp : float 
+  ; direction : arrow_direction
   }
 
-type decision =
-  | In_progress of { whose_turn : player_kind }
-  | Winner of player_kind
-  | Stalemate
+type judgement = 
+  | Marvelous
+  | Perfect
+  | Great
+  | Good
+  | Miss
 
+type decision = 
+  | In_progress
+  | Stage_cleared of { final_score : int }
+  | Stage_failed
+
+(** [type game_state] tracks the current status of the gameplay loop. *)
 type game_state =
-  { board : (cell_position * player_kind) list
-  ; rows : int
-  ; columns : int
-  ; winning_sequence_length : int
+  { upcoming_notes : note list
+  ; life_bar : float
+  ; score : int 
+  ; combo : int 
+  ; song_elapsed : float 
   ; decision : decision
   }
 
-type move = cell_position
+type move = 
+  { key_pressed : arrow_direction 
+  ; press_time : float
+  }
 
+val evaluate_judgement : float -> judgement
 val initial_state : game_state
-val move_at_0x0 : move
-val state_after_move_at_0x0 : game_state
-val before_terminal_state : game_state
+
+val move_at_1_s : move
+val state_after_move_at_1_s : game_state
+val before_teminal_state : game_state
 val move_to_terminal_state : move
 val terminal_state : game_state
