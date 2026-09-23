@@ -1,3 +1,5 @@
+open! Core
+
 type arrow_direction = 
   | Left
   | Down
@@ -36,10 +38,3 @@ type move =
   }
 
 val evaluate_judgement : float -> judgement
-
-val initial_state : game_state
-val move_at_1_s : move
-val state_after_move_at_1_s : game_state
-val before_teminal_state : game_state
-val move_to_terminal_state : move
-val terminal_state : game_state

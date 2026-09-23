@@ -35,7 +35,7 @@ type move =
   ; press_time : float
   }
 
-let evaluate_judgement (delta_time : float) judgment = 
+let evaluate_judgement (delta_time : float) : judgement = 
    let abs_delta = Float.abs delta_time in 
    if abs_delta <= 0.02 then Marvelous
    else if abs_delta <= 0.05 then Perfect 
