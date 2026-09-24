@@ -38,3 +38,4 @@ type move =
   }
 
 val evaluate_judgement : float -> judgement
+val make_move : game_state -> move -> game_state
