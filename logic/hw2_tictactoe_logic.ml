@@ -6,9 +6,7 @@ module Player_kind = struct
     | O
   [@@deriving sexp, compare, equal]
 
-  (* It's clearer to use type inference and just write:
-     [let opposite t =]
-  *)
+  (* It's clearer to use type inference and just write: [let opposite t =] *)
   let opposite (t : t) : t =
     match t with
     | X -> O
